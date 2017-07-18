@@ -1,0 +1,14 @@
+{
+  "name": "drupal/vue_controls",
+  "type": "drupal-module",
+  "description": "Vue Controls",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/vue_controls",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/vue_controls",
+    "source": "http://cgit.drupalcode.org/vue_controls"
+  },
+  "require": { }
+}

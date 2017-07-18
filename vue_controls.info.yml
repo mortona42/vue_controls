@@ -1,0 +1,7 @@
+name: Vue Controls
+type: module
+description: Vue Controls
+core: 8.x
+package: Custom
+dependencies:
+  - vuejs
