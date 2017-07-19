@@ -1,7 +1,13 @@
-<div class="vue-controls-incrementer" nid="{{ nid }}" score="{{ score }}" field="{{ field }}" type="{{ type }}">
-  <span>${ score }</span>
+<div class="vue-controls-incrementer" entityId="{{ entity_id }}" fieldValue="{{ field_value }}" fieldName="{{ field_name }}" bundle="{{ bundle }}">
   <div>
-    <span @click="decreaseScore">-</span>
-    <span @click="increaseScore">+</span>
+    <span>{{ field_label }}</span>
+  </div>
+  <div>
+    <span>${ field_value }</span>
+  </div>
+  <div>
+    <span @click="decreaseValue">-</span>
+    <span @click="increaseValue">+</span>
   </div>
 </div>
+

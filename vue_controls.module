@@ -4,14 +4,15 @@
    return [
      'vue_controls_incrementer' => [
        'variables' => [
-         'type' => '',
-         'score' => '',
-         'nid' => '',
-         'field' => '',
+         'entity_id' => '',
+         'bundle' => '',
+         'field_name' => '',
+         'field_value' => '',
+         'field_label' => '',
        ],
-     ],
-   ];
- }
+    ],
+  ];
+}
 
 function vue_controls_page_attachments(array &$attachments) {
   $attachments['#attached']['library'][] = 'vue_controls/vue_controls';

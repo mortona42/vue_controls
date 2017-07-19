@@ -3,7 +3,8 @@
 namespace Drupal\vue_controls\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\FormatterBase;
+use Drupal\Core\Field\Plugin\Field\FieldFormatter\IntegerFormatter;
+use Drupal\Core\Render\Element;
 
 /**
  * Plugin implementation of the 'vue_controls_incrementer' formatter.
@@ -16,21 +17,25 @@ use Drupal\Core\Field\FormatterBase;
  *   }
  * )
  */
-class VueControlsIncrementer extends FormatterBase {
-
+class VueControlsIncrementer extends IntegerFormatter {
   /**
    * {@inheritdoc}
    */
-  public function viewElements(FieldItemListInterface $items, $langcode) {
+  public function view(FieldItemListInterface $items, $langcode = NULL) {
+    $entity_id = $items->getEntity()->id();
+    $bundle = $items->getEntity()->bundle();
+    $field_name = $items->getName();
+    $field_value = $items->getValue()[0]['value'];
+    $field_label = $items->getFieldDefinition()->label();
+
     $elements = [
       '#theme' => 'vue_controls_incrementer',
-      '#type' => $items->getEntity()->bundle(),
-      '#score' => $items[0]->value,
-      '#nid' => $items->getParent()->get('nid')->value,
-      '#field' => 'field_test',
+      '#entity_id' => $entity_id,
+      '#bundle' => $bundle,
+      '#field_name' => $field_name,
+      '#field_value' => $field_value,
+      '#field_label' => $field_label,
     ];
-
     return $elements;
   }
-
 }
