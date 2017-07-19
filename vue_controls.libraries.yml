@@ -1,0 +1,6 @@
+vue_controls:
+  version: 1.x
+  js:
+    components/vue-controls-incrementer.js: {}
+  dependencies:
+    - vuejs/vue_resource
