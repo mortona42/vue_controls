@@ -4,8 +4,10 @@
    return [
      'vue_controls_incrementer' => [
        'variables' => [
+         'type' => '',
          'score' => '',
          'nid' => '',
+         'field' => '',
        ],
      ],
    ];

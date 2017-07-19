@@ -7,6 +7,8 @@ for (var i = 0; i < vueElements.length; i++) {
     el: vueElements[i],
 
     data: {
+      type: vueElements[i].attributes.type.value,
+      field: vueElements[i].attributes.field.value,
       score: vueElements[i].attributes.score.value,
       nid: vueElements[i].attributes.nid.value,
       token: '',
@@ -21,20 +23,20 @@ for (var i = 0; i < vueElements.length; i++) {
           console.log(response);
         });
         this.$http.get('/node/' + this.nid + "?_format=json").then(response => {
-          this.$set(this, 'score', response.data.field_score[0].value);
+          this.$set(this, 'score', response.data[this.field][0].value);
         }, response => {
           console.log(response);
         });
       },
 
       setScore: function(value) {
-        this.$http({url: '/node/' + this.nid  + '?_format=json', method: 'PATCH', body: '{"type": "score", "field_score":[{"value":' + value + '}]}', headers: {
+        this.$http({url: '/node/' + this.nid  + '?_format=json', method: 'PATCH', body: '{"type": "' + this.type + '", "' + this.field + '":[{"value":' + value + '}]}', headers: {
           "Content-Type": 'application/json',
           "X-CSRF-Token": this.token,
         }}).then(response => {
           console.log(this.score);
-        }, function() {
-          alert('fail');
+        }, response => {
+          console.log(response);
         });
       },
 

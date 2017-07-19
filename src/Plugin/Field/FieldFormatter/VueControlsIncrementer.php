@@ -22,10 +22,13 @@ class VueControlsIncrementer extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = [];
-    $elements['#theme'] = 'vue_controls_incrementer';
-    $elements['#score'] = $items[0]->value;
-    $elements['#nid'] = $items->getParent()->get('nid')->value;
+    $elements = [
+      '#theme' => 'vue_controls_incrementer',
+      '#type' => $items->getEntity()->bundle(),
+      '#score' => $items[0]->value,
+      '#nid' => $items->getParent()->get('nid')->value,
+      '#field' => 'field_test',
+    ];
 
     return $elements;
   }
